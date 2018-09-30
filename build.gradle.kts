@@ -18,10 +18,10 @@ dependencies {
 }
 
 buildScan {
-    setLicenseAgreementUrl("https://gradle.com/terms-of-service") 
+    setLicenseAgreementUrl("https://gradle.com/terms-of-service")
     setLicenseAgree("yes")
 
-    publishAlways() 
+    publishAlways()
 }
 
 tasks.withType<Test> {
