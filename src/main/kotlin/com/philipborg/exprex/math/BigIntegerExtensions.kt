@@ -41,7 +41,10 @@ private fun resolve(quotient: BigInteger, remainder: BigInteger, divisor: BigInt
             (remainder * 2).abs() > divisor.abs() -> resolve(quotient, remainder, divisor, RoundingMode.UP)
             else -> resolve(quotient, remainder, divisor, RoundingMode.DOWN)
         }
-        RoundingMode.HALF_UP -> TODO()
+        RoundingMode.HALF_UP -> when {
+            (remainder * 2).abs() < divisor.abs() -> resolve(quotient, remainder, divisor, RoundingMode.DOWN)
+            else -> resolve(quotient, remainder, divisor, RoundingMode.UP)
+        }
         RoundingMode.HALF_EVEN -> TODO()
         else -> throw NotImplementedError("Rounding mode " + roundingMode.name)
     }
