@@ -136,9 +136,9 @@ class BigIntegerDivisions {
 
     private fun resolve(roundingMode: RoundingMode, vararg scenarios: Scenario): Stream<Executable> {
         return scenarios.map {
-            Executable { Assertions.assertEquals(it.output.toBigInteger(), it.dividend.toBigInteger().div(it.divisor, roundingMode), it.toString()) }
+            Executable { Assertions.assertEquals(it.quotient.toBigInteger(), it.dividend.toBigInteger().div(it.divisor, roundingMode), it.toString()) }
         }.stream()
     }
 
-    data class Scenario(val dividend: Long, val divisor: Long, val output: Long)
+    data class Scenario(val dividend: Long, val divisor: Long, val quotient: Long)
 }
