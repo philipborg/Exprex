@@ -7,5 +7,5 @@ import java.math.BigInteger
 import java.math.RoundingMode
 
 class DivisionExprex(dividend: Exprex, divisor: Exprex, private val roundingMode: RoundingMode) : ParentOfTwo(dividend, divisor) {
-    override fun invoke(input: Sequence<BigInteger>): BigInteger = childOne(input).div(childTwo(input), roundingMode)
+    override fun invoke(vararg input: BigInteger): BigInteger = childOne(*input).div(childTwo(*input), roundingMode)
 }

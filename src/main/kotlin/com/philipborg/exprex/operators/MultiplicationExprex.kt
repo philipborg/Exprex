@@ -5,5 +5,5 @@ import com.philipborg.exprex.ParentOfTwo
 import java.math.BigInteger
 
 class MultiplicationExprex(multiplier: Exprex, multiplicand: Exprex) : ParentOfTwo(multiplier, multiplicand) {
-    override fun invoke(input: Sequence<BigInteger>): BigInteger = childOne(input) * childTwo(input)
+    override fun invoke(vararg input: BigInteger): BigInteger = childOne(*input) * childTwo(*input)
 }
