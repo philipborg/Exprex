@@ -21,7 +21,7 @@ class Addition {
                         Scenario(2, -3, -1)
                 ).map {
                     Executable {
-                        Assertions.assertEquals(it.sum.toBigInteger(), AdditionExprex(it.augend.toValueExprex(), it.addend.toValueExprex()).invoke())
+                        Assertions.assertEquals(it.sum.toBigInteger(), AdditionExprex(it.augend.toValueExprex(), it.addend.toValueExprex()).invoke(), it.toString())
                     }
                 }
         )
