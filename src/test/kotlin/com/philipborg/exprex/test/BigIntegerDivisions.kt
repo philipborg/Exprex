@@ -113,10 +113,30 @@ class BigIntegerDivisions {
         Assertions.assertAll(scenarios)
     }
 
+    @Test
+    fun half_even() {
+        val scenarios = resolve(RoundingMode.HALF_EVEN,
+                Scenario(100, 10, 10),
+                Scenario(100, 9, 11),
+                Scenario(100, -9, -11),
+                Scenario(0, 100, 0),
+                Scenario(1, 2, 0),
+                Scenario(-1, 2, 0),
+                Scenario(1, -2, 0),
+                Scenario(5, 3, 2),
+                Scenario(3, 2, 2),
+                Scenario(-16, 10, -2),
+                Scenario(5, 2, 2),
+                Scenario(-15, 10, -1),
+                Scenario(15, 10, 2)
+        )
+        Assertions.assertAll(scenarios)
+    }
+
 
     private fun resolve(roundingMode: RoundingMode, vararg scenarios: Scenario): Stream<Executable> {
         return scenarios.map {
-            Executable { Assertions.assertEquals(it.output.toBigInteger(), it.dividend.toBigInteger().div(it.divisor, roundingMode)) }
+            Executable { Assertions.assertEquals(it.output.toBigInteger(), it.dividend.toBigInteger().div(it.divisor, roundingMode), it.toString()) }
         }.stream()
     }
 

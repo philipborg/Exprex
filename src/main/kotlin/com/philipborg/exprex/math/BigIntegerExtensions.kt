@@ -6,7 +6,7 @@ import java.math.RoundingMode
 fun BigInteger.div(divisor: BigInteger, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger {
     val result = when {
         divisor > BigInteger.ZERO -> this.divideAndRemainder(divisor)
-        else -> (this * -BigInteger.ONE).divideAndRemainder(divisor * -BigInteger.ONE)
+        else -> this.negate().divideAndRemainder(divisor.negate())
     }
     return resolve(result[0], result[1], divisor, roundingMode)
 }
@@ -45,7 +45,14 @@ private fun resolve(quotient: BigInteger, remainder: BigInteger, divisor: BigInt
             (remainder * 2).abs() < divisor.abs() -> resolve(quotient, remainder, divisor, RoundingMode.DOWN)
             else -> resolve(quotient, remainder, divisor, RoundingMode.UP)
         }
-        RoundingMode.HALF_EVEN -> TODO()
+        RoundingMode.HALF_EVEN -> {
+            val mode = if (quotient.lowestSetBit == 0 && quotient > BigInteger.ZERO)
+                RoundingMode.HALF_UP
+            else
+                RoundingMode.HALF_DOWN
+
+            return resolve(quotient, remainder, divisor, mode)
+        }
         else -> throw NotImplementedError("Rounding mode " + roundingMode.name)
     }
 }
