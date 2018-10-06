@@ -61,11 +61,3 @@ fun BigInteger.div(divisor: Byte, roundingMode: RoundingMode = RoundingMode.UNNE
 fun BigInteger.div(divisor: Short, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
 fun BigInteger.div(divisor: Int, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
 fun BigInteger.div(divisor: Long, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
-
-operator fun BigInteger.times(factor: Byte): BigInteger = this * factor.toBigInteger()
-operator fun BigInteger.times(factor: Short): BigInteger = this * factor.toBigInteger()
-operator fun BigInteger.times(factor: Int): BigInteger = this * factor.toBigInteger()
-operator fun BigInteger.times(factor: Long): BigInteger = this * factor.toBigInteger()
-
-fun Byte.toBigInteger(): BigInteger = this.toLong().toBigInteger()
-fun Short.toBigInteger(): BigInteger = this.toLong().toBigInteger()
