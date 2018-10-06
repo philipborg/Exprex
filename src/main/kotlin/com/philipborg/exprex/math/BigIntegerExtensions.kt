@@ -23,17 +23,16 @@ fun BigInteger.div(divisor: BigInteger, roundingMode: RoundingMode = RoundingMod
         }
         RoundingMode.UNNECESSARY ->
             throw ArithmeticException("Not perfect division with rounding mode" + roundingMode.name)
-        RoundingMode.UP -> {
-            when {
-                result[0] > BigInteger.ZERO -> result[0] + BigInteger.ONE
-                result[0] < BigInteger.ZERO -> result[0] - BigInteger.ONE
-                result[0] == BigInteger.ZERO -> when {
-                    result[1] > BigInteger.ZERO -> BigInteger.ONE
-                    else -> -BigInteger.ONE
-                }
-                else -> throw ArithmeticException()
+        RoundingMode.UP -> when {
+            result[0] > BigInteger.ZERO -> result[0] + BigInteger.ONE
+            result[0] < BigInteger.ZERO -> result[0] - BigInteger.ONE
+            result[0] == BigInteger.ZERO -> when {
+                result[1] > BigInteger.ZERO -> BigInteger.ONE
+                else -> -BigInteger.ONE
             }
+            else -> throw ArithmeticException()
         }
+
         RoundingMode.DOWN -> result[0]
         RoundingMode.HALF_UP -> TODO()
         RoundingMode.HALF_DOWN -> TODO()
