@@ -4,6 +4,6 @@ import com.philipborg.exprex.Exprex
 import com.philipborg.exprex.ParentOfTwo
 import java.math.BigInteger
 
-class Subtraction(minuend: Exprex, subtrahend: Exprex) : ParentOfTwo(minuend, subtrahend) {
+class SubtractionExprex(minuend: Exprex, subtrahend: Exprex) : ParentOfTwo(minuend, subtrahend) {
     override fun invoke(input: Sequence<BigInteger>): BigInteger = childOne(input) - childTwo(input)
 }
