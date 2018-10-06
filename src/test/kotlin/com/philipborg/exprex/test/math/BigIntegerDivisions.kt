@@ -1,4 +1,4 @@
-package com.philipborg.exprex.test
+package com.philipborg.exprex.test.math
 
 import com.philipborg.exprex.math.div
 import org.junit.jupiter.api.Assertions
