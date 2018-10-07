@@ -2,6 +2,11 @@ package com.philipborg.exprex.math
 
 import java.math.RoundingMode
 
+fun Byte.div(divisor: Byte, roundingMode: RoundingMode): Byte = this.toBigInteger().div(divisor, roundingMode).byteValueExact()
+fun Byte.div(divisor: Short, roundingMode: RoundingMode): Byte = this.toBigInteger().div(divisor, roundingMode).byteValueExact()
+fun Byte.div(divisor: Int, roundingMode: RoundingMode): Byte = this.toBigInteger().div(divisor, roundingMode).byteValueExact()
+fun Byte.div(divisor: Long, roundingMode: RoundingMode): Byte = this.toBigInteger().div(divisor, roundingMode).byteValueExact()
+
 fun Short.div(divisor: Byte, roundingMode: RoundingMode): Short = this.toBigInteger().div(divisor, roundingMode).shortValueExact()
 fun Short.div(divisor: Short, roundingMode: RoundingMode): Short = this.toBigInteger().div(divisor, roundingMode).shortValueExact()
 fun Short.div(divisor: Int, roundingMode: RoundingMode): Short = this.toBigInteger().div(divisor, roundingMode).shortValueExact()
