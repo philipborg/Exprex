@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib", "1.2.31"))
+    implementation(kotlin("stdlib", "1.2.71"))
     testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testCompile("org.junit.jupiter:junit-jupiter-params:$junitVersion")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
