@@ -9,6 +9,26 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ByteArrayConversions {
     @Test
+    fun maxShortBigEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(127, -1), Short.MAX_VALUE.toBytes(Endian.BIG_ENDIAN))
+    }
+
+    @Test
+    fun minShortBigEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(-128, 0), Short.MIN_VALUE.toBytes(Endian.BIG_ENDIAN))
+    }
+
+    @Test
+    fun maxShortLittleEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(-1, 127), Short.MAX_VALUE.toBytes(Endian.LITTLE_ENDIAN))
+    }
+
+    @Test
+    fun minShortLittleEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(0, -128), Short.MIN_VALUE.toBytes(Endian.LITTLE_ENDIAN))
+    }
+
+    @Test
     fun maxIntBigEndian() {
         Assertions.assertArrayEquals(byteArrayOf(127, -1, -1, -1), Int.MAX_VALUE.toBytes(Endian.BIG_ENDIAN))
     }

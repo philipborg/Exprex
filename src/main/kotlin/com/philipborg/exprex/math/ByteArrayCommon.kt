@@ -1,5 +1,19 @@
 package com.philipborg.exprex.math
 
+fun Short.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray {
+    val input = this.toInt()
+    return when (endianness) {
+        Endian.BIG_ENDIAN -> byteArrayOf(
+                (input shr 8 and 0xff).toByte(),
+                (input and 0xff).toByte()
+        )
+        Endian.LITTLE_ENDIAN -> byteArrayOf(
+                (input and 0xff).toByte(),
+                (input shr 8 and 0xff).toByte()
+        )
+    }
+}
+
 fun Int.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endianness) {
     Endian.BIG_ENDIAN -> byteArrayOf(
             (this shr 24 and 0xff).toByte(),
