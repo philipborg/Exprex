@@ -55,7 +55,7 @@ class Power {
 
     @Test
     fun zeroPositive() {
-        val powerExprex = PowerExprex(0.toValueExprex(), 3.toValueExprex(), RoundingMode.UNNECESSARY)
+        val powerExprex = PowerExprex(0.toValueExprex(), Long.MAX_VALUE.toValueExprex(), RoundingMode.UNNECESSARY)
         Assertions.assertEquals(BigInteger.ZERO, powerExprex())
     }
 
@@ -80,6 +80,12 @@ class Power {
     @Test
     fun negativeZero() {
         val powerExprex = PowerExprex((-3).toValueExprex(), 0.toValueExprex(), RoundingMode.UNNECESSARY)
+        Assertions.assertEquals(BigInteger.ONE, powerExprex())
+    }
+
+    @Test
+    fun closeToZero() {
+        val powerExprex = PowerExprex(2.toValueExprex(), (-1000).toValueExprex(), RoundingMode.UP)
         Assertions.assertEquals(BigInteger.ONE, powerExprex())
     }
 }
