@@ -1,9 +1,11 @@
 package com.philipborg.exprex
 
-abstract class ParentOfOne(val child: Exprex) : Exprex {
+import java.math.RoundingMode
 
-}
+abstract class Unary(val child: Exprex) : Exprex
 
-abstract class ParentOfTwo(val childOne: Exprex, val childTwo: Exprex) : Exprex {
+abstract class UnaryRounding(val child: Exprex, rounding: RoundingMode) : Exprex
 
-}
+abstract class Binary(val childOne: Exprex, val childTwo: Exprex) : Exprex
+
+abstract class BinaryRounding(val childOne: Exprex, val childTwo: Exprex, val rounding: RoundingMode) : Exprex
