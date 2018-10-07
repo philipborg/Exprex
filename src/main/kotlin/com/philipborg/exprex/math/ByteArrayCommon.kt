@@ -1,5 +1,7 @@
 package com.philipborg.exprex.math
 
+import java.math.BigInteger
+
 fun Short.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray {
     val input = this.toInt()
     return when (endianness) {
@@ -50,4 +52,9 @@ fun Long.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endi
             (this shr 48 and 0xff).toByte(),
             (this shr 56 and 0xff).toByte()
     )
+}
+
+fun BigInteger.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endianness) {
+    Endian.BIG_ENDIAN -> this.toByteArray()
+    Endian.LITTLE_ENDIAN -> this.toByteArray().reversed().toByteArray()
 }

@@ -67,4 +67,24 @@ class ByteArrayConversions {
     fun minLongLittleEndian() {
         Assertions.assertArrayEquals(byteArrayOf(0, 0, 0, 0, 0, 0, 0, -128), Long.MIN_VALUE.toBytes(Endian.LITTLE_ENDIAN))
     }
+
+    @Test
+    fun positiveBigIntegerBigEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(127, -1, -1, -1), Int.MAX_VALUE.toBigInteger().toBytes(Endian.BIG_ENDIAN))
+    }
+
+    @Test
+    fun negativeBigIntegerBigEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(-128, 0, 0, 0), Int.MIN_VALUE.toBigInteger().toBytes(Endian.BIG_ENDIAN))
+    }
+
+    @Test
+    fun positiveBigIntegerLittleEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(-1, -1, -1, 127), Int.MAX_VALUE.toBigInteger().toBytes(Endian.LITTLE_ENDIAN))
+    }
+
+    @Test
+    fun negativeBigIntegerLittleEndian() {
+        Assertions.assertArrayEquals(byteArrayOf(0, 0, 0, -128), Int.MIN_VALUE.toBigInteger().toBytes(Endian.LITTLE_ENDIAN))
+    }
 }
