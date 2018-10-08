@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class VLQ {
+class VLQEncoding {
     @Test
     fun zeroToVLQUnsigned() {
         Assertions.assertArrayEquals(byteArrayOf(0), 0.toVLQ(false))
