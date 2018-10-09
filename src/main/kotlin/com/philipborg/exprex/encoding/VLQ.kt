@@ -1,5 +1,7 @@
-package com.philipborg.exprex.math
+package com.philipborg.exprex.encoding
 
+import com.philipborg.exprex.math.div
+import com.philipborg.exprex.math.toBigInteger
 import com.philipborg.exprex.util.sliceWhereIncluding
 import java.math.BigInteger
 import java.math.RoundingMode

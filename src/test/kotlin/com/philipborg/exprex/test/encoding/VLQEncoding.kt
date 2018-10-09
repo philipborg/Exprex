@@ -1,6 +1,6 @@
-package com.philipborg.exprex.test.math
+package com.philipborg.exprex.test.encoding
 
-import com.philipborg.exprex.math.toVLQ
+import com.philipborg.exprex.encoding.toVLQ
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
