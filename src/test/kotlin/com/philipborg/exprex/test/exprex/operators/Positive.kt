@@ -1,4 +1,4 @@
-package com.philipborg.exprex.test.exprex
+package com.philipborg.exprex.test.exprex.operators
 
 import com.philipborg.exprex.operators.PositiveExprex
 import com.philipborg.exprex.toValueExprex

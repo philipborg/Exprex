@@ -1,4 +1,4 @@
-package com.philipborg.exprex.test.exprex
+package com.philipborg.exprex.test.exprex.operators
 
 import com.philipborg.exprex.VariableExprex
 import com.philipborg.exprex.exceptions.MissingParameterException
