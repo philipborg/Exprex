@@ -18,9 +18,8 @@ dependencies {
 }
 
 buildScan {
-    setLicenseAgreementUrl("https://gradle.com/terms-of-service")
-    setLicenseAgree("yes")
-
+    setTermsOfServiceUrl("https://gradle.com/terms-of-service")
+    setTermsOfServiceAgree("yes")
     publishAlways()
 }
 
