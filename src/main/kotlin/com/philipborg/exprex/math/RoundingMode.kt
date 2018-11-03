@@ -1,4 +1,4 @@
-package com.philipborg.exprex
+package com.philipborg.exprex.math
 
 enum class RoundingMode(val id: Int) {
     UNNECESSARY(0),

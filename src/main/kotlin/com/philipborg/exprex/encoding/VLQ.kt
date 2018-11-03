@@ -1,11 +1,11 @@
 package com.philipborg.exprex.encoding
 
+import com.philipborg.exprex.math.RoundingMode
 import com.philipborg.exprex.math.div
 import com.philipborg.exprex.math.toBigInteger
 import com.philipborg.exprex.util.sliceWhereIncluding
 import com.philipborg.exprex.util.takeWhileIncludingLast
 import java.math.BigInteger
-import java.math.RoundingMode
 
 fun BigInteger.toVLQ(signed: Boolean = true): ByteArray {
     require(this.signum() >= 0 || signed)

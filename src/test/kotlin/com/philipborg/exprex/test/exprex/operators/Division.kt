@@ -1,12 +1,12 @@
 package com.philipborg.exprex.test.exprex.operators
 
+import com.philipborg.exprex.math.RoundingMode
 import com.philipborg.exprex.operators.DivisionExprex
 import com.philipborg.exprex.toValueExprex
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
-import java.math.RoundingMode
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Division {

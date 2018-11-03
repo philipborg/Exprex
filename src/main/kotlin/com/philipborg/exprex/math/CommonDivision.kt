@@ -1,7 +1,5 @@
 package com.philipborg.exprex.math
 
-import java.math.RoundingMode
-
 fun Byte.div(divisor: Byte, roundingMode: RoundingMode): Byte = this.toBigInteger().div(divisor, roundingMode).byteValueExact()
 fun Byte.div(divisor: Short, roundingMode: RoundingMode): Byte = this.toBigInteger().div(divisor, roundingMode).byteValueExact()
 fun Byte.div(divisor: Int, roundingMode: RoundingMode): Byte = this.toBigInteger().div(divisor, roundingMode).byteValueExact()

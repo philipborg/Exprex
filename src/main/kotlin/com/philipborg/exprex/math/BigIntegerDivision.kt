@@ -1,7 +1,6 @@
 package com.philipborg.exprex.math
 
 import java.math.BigInteger
-import java.math.RoundingMode
 
 fun BigInteger.div(divisor: BigInteger, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger {
     val result = when {
@@ -11,7 +10,7 @@ fun BigInteger.div(divisor: BigInteger, roundingMode: RoundingMode = RoundingMod
     return resolve(result[0], result[1], divisor, roundingMode)
 }
 
-private fun resolve(quotient: BigInteger, remainder: BigInteger, divisor: BigInteger, roundingMode: RoundingMode): BigInteger {
+private tailrec fun resolve(quotient: BigInteger, remainder: BigInteger, divisor: BigInteger, roundingMode: RoundingMode): BigInteger {
     if (remainder == BigInteger.ZERO)
         return quotient
 
@@ -53,6 +52,7 @@ private fun resolve(quotient: BigInteger, remainder: BigInteger, divisor: BigInt
 
             return resolve(quotient, remainder, divisor, mode)
         }
+        // TODO Implement all RoundingModes
         else -> throw NotImplementedError("Rounding mode " + roundingMode.name)
     }
 }

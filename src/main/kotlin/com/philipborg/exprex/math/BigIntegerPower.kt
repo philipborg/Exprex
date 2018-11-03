@@ -1,7 +1,6 @@
 package com.philipborg.exprex.math
 
 import java.math.BigInteger
-import java.math.RoundingMode
 
 fun BigInteger.power(exponent: BigInteger, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = when {
     this == BigInteger.ZERO -> when (exponent) {

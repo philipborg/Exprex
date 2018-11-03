@@ -1,12 +1,12 @@
 package com.philipborg.exprex.test.math
 
+import com.philipborg.exprex.math.RoundingMode
 import com.philipborg.exprex.math.div
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
 import java.math.BigInteger
-import java.math.RoundingMode
 import java.util.stream.Stream
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
