@@ -3,7 +3,7 @@ package com.philipborg.exprex
 import com.philipborg.exprex.exceptions.MissingParameterException
 import java.math.BigInteger
 
-class VariableExprex(val parameter: Int) : Exprex {
+data class VariableExprex(val parameter: Int) : Exprex {
 
     init {
         if (parameter < 0)
