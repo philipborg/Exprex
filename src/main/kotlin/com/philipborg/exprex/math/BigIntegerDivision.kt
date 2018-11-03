@@ -45,15 +45,20 @@ private tailrec fun resolve(quotient: BigInteger, remainder: BigInteger, divisor
             else -> resolve(quotient, remainder, divisor, RoundingMode.UP)
         }
         RoundingMode.HALF_EVEN -> {
-            val mode = if (quotient.lowestSetBit == 0 && quotient > BigInteger.ZERO)
+            val mode = if (quotient.lowestSetBit == 0)
                 RoundingMode.HALF_UP
             else
                 RoundingMode.HALF_DOWN
 
             return resolve(quotient, remainder, divisor, mode)
         }
-        // TODO Implement all RoundingModes
-        else -> throw NotImplementedError("Rounding mode " + roundingMode.name)
+        RoundingMode.HALF_ODD -> {
+            val mode = if (quotient.lowestSetBit == 0)
+                RoundingMode.HALF_DOWN
+            else
+                RoundingMode.HALF_UP
+            return resolve(quotient, remainder, divisor, mode)
+        }
     }
 }
 
