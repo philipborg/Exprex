@@ -3,7 +3,7 @@ package com.philipborg.exprex
 import com.philipborg.exprex.math.toBigInteger
 import java.math.BigInteger
 
-class ValueExprex(val value: BigInteger) : Exprex {
+data class ValueExprex(val value: BigInteger) : Exprex {
     override fun invoke(vararg input: BigInteger): BigInteger = value
 }
 

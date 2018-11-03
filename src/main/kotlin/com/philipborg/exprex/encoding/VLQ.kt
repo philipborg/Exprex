@@ -3,6 +3,7 @@ package com.philipborg.exprex.encoding
 import com.philipborg.exprex.math.div
 import com.philipborg.exprex.math.toBigInteger
 import com.philipborg.exprex.util.sliceWhereIncluding
+import com.philipborg.exprex.util.takeWhileIncludingLast
 import java.math.BigInteger
 import java.math.RoundingMode
 
@@ -45,6 +46,9 @@ fun Sequence<BigInteger>.toVLQ(signed: Boolean = true): Sequence<Byte> = this.ma
 fun Collection<BigInteger>.toVLQ(signed: Boolean = true): ByteArray = this.map { it.toVLQ(signed) }.flatMap { it.asIterable() }.toByteArray()
 
 fun ByteArray.asSingleVLQ(signed: Boolean = true): BigInteger {
+    require(this.dropLast(1).all { it.toInt() and 128 > 0 })
+    require(this.last().toInt() shr 7 == 0)
+
     val dataBits = (7 * this.size) - if (signed) 1 else 0
     val responseLength = (dataBits + 1).div(8, RoundingMode.CEILING)
     val response = ByteArray(responseLength)
@@ -76,5 +80,8 @@ fun ByteArray.asSingleVLQ(signed: Boolean = true): BigInteger {
 
 fun Collection<Byte>.asSingleVLQ(signed: Boolean = true): BigInteger = this.toByteArray().asSingleVLQ(signed)
 
-fun ByteArray.asVLQ(signed: Boolean = true): Sequence<BigInteger> = this.toList().sliceWhereIncluding { it.toInt().shr(7) == 0 }.asSequence().map { it.asSingleVLQ() }
-fun Collection<Byte>.asVLQ(signed: Boolean = true): Sequence<BigInteger> = this.toByteArray().asVLQ(signed)
+fun ByteArray.asFirstVLQ(signed: Boolean = true): BigInteger = this.asList().asFirstVLQ(signed)
+fun Collection<Byte>.asFirstVLQ(signed: Boolean = true): BigInteger = this.takeWhileIncludingLast { it.toInt() and 128 > 0 }.asSingleVLQ(signed)
+
+fun ByteArray.asVLQ(signed: Boolean = true): Sequence<BigInteger> = this.asList().asVLQ(signed)
+fun Collection<Byte>.asVLQ(signed: Boolean = true): Sequence<BigInteger> = this.sliceWhereIncluding { it.toInt() shr 7 == 0 }.asSequence().map { it.asSingleVLQ(signed) }
