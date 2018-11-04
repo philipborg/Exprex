@@ -9,7 +9,7 @@ fun BigInteger.power(exponent: BigInteger, roundingMode: RoundingMode = Rounding
     }
     exponent >= BigInteger.ZERO -> when {
         exponent <= Int.MAX_VALUE.toBigInteger() -> this.pow(exponent.toInt())
-        else -> TODO("Exponents larger than ${Int.MAX_VALUE} not yet supported")
+        else -> TODO("Exponents larger than ${Int.MAX_VALUE} not supported.")
     }
     else -> BigInteger.ONE.div(this.power(exponent.abs()), roundingMode)
 }
