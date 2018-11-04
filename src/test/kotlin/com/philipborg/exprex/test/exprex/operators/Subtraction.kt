@@ -1,7 +1,7 @@
 package com.philipborg.exprex.test.exprex.operators
 
-import com.philipborg.exprex.operators.SubtractionExprex
-import com.philipborg.exprex.toValueExprex
+import com.philipborg.exprex.nodes.SubtractionNode
+import com.philipborg.exprex.toValueNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -22,7 +22,7 @@ class Subtraction {
                         Scenario(2, -3, 5)
                 ).map {
                     Executable {
-                        Assertions.assertEquals(it.difference.toBigInteger(), SubtractionExprex(it.minuend.toValueExprex(), it.subtrahend.toValueExprex()).invoke(), it.toString())
+                        Assertions.assertEquals(it.difference.toBigInteger(), SubtractionNode(it.minuend.toValueNode(), it.subtrahend.toValueNode()).invoke(), it.toString())
                     }
                 }
         )

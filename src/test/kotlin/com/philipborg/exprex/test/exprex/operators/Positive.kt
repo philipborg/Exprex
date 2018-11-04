@@ -1,7 +1,7 @@
 package com.philipborg.exprex.test.exprex.operators
 
-import com.philipborg.exprex.operators.PositiveExprex
-import com.philipborg.exprex.toValueExprex
+import com.philipborg.exprex.nodes.PositiveNode
+import com.philipborg.exprex.toValueNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -11,19 +11,19 @@ import java.math.BigInteger
 class Positive {
     @Test
     fun positive() {
-        val positiveExprex = PositiveExprex(1.toValueExprex())
-        Assertions.assertEquals(BigInteger.ONE, positiveExprex())
+        val positiveNode = PositiveNode(1.toValueNode())
+        Assertions.assertEquals(BigInteger.ONE, positiveNode())
     }
 
     @Test
     fun negative() {
-        val positiveExprex = PositiveExprex((-1).toValueExprex())
-        Assertions.assertEquals(BigInteger.ONE, positiveExprex())
+        val positiveNode = PositiveNode((-1).toValueNode())
+        Assertions.assertEquals(BigInteger.ONE, positiveNode())
     }
 
     @Test
     fun zero() {
-        val positiveExprex = PositiveExprex(0.toValueExprex())
-        Assertions.assertEquals(BigInteger.ZERO, positiveExprex())
+        val positiveNode = PositiveNode(0.toValueNode())
+        Assertions.assertEquals(BigInteger.ZERO, positiveNode())
     }
 }

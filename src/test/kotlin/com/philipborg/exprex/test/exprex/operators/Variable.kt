@@ -1,10 +1,10 @@
 package com.philipborg.exprex.test.exprex.operators
 
-import com.philipborg.exprex.VariableExprex
+import com.philipborg.exprex.VariableNode
 import com.philipborg.exprex.exceptions.MissingParameterException
-import com.philipborg.exprex.operators.AdditionExprex
-import com.philipborg.exprex.operators.SubtractionExprex
-import com.philipborg.exprex.toValueExprex
+import com.philipborg.exprex.nodes.AdditionNode
+import com.philipborg.exprex.nodes.SubtractionNode
+import com.philipborg.exprex.toValueNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -15,34 +15,34 @@ class Variable {
     @Test
     fun skippingParameters() {
         val params = arrayOf(1, 2, 3, 4).map { it.toBigInteger() }.toTypedArray()
-        val augend = VariableExprex(1)
-        val addend = VariableExprex(2)
+        val augend = VariableNode(1)
+        val addend = VariableNode(2)
 
-        val additionExprex = AdditionExprex(augend, addend)
-        Assertions.assertEquals(5.toBigInteger(), additionExprex(*params))
+        val additionNode = AdditionNode(augend, addend)
+        Assertions.assertEquals(5.toBigInteger(), additionNode(*params))
     }
 
     @Test
     fun negativeParameters() {
-        val minuend = VariableExprex(0)
-        val subtrahend = 2.toValueExprex()
+        val minuend = VariableNode(0)
+        val subtrahend = 2.toValueNode()
 
-        val subtractionExprex = SubtractionExprex(minuend, subtrahend)
-        Assertions.assertEquals(2.toBigInteger(), subtractionExprex(4.toBigInteger()))
+        val subtractionNode = SubtractionNode(minuend, subtrahend)
+        Assertions.assertEquals(2.toBigInteger(), subtractionNode(4.toBigInteger()))
     }
 
     @Test
     fun missingParameter() {
-        val augend = VariableExprex(1)
-        val addend = VariableExprex(0)
+        val augend = VariableNode(1)
+        val addend = VariableNode(0)
 
-        val additionExprex = AdditionExprex(augend, addend)
+        val additionNode = AdditionNode(augend, addend)
 
-        Assertions.assertThrows(MissingParameterException::class.java) { additionExprex(1.toBigInteger()) }
+        Assertions.assertThrows(MissingParameterException::class.java) { additionNode(1.toBigInteger()) }
     }
 
     @Test
     fun illegalParameter() {
-        Assertions.assertThrows(MissingParameterException::class.java) { VariableExprex(-1) }
+        Assertions.assertThrows(MissingParameterException::class.java) { VariableNode(-1) }
     }
 }

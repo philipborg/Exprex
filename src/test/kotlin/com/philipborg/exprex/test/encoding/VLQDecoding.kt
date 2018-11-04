@@ -1,7 +1,7 @@
 package com.philipborg.exprex.test.encoding
 
-import com.philipborg.exprex.encoding.asFirstVLQ
-import com.philipborg.exprex.encoding.asSingleVLQ
+import com.philipborg.exprex.encoding.firstVLQ
+import com.philipborg.exprex.encoding.singleVLQ
 import com.philipborg.exprex.encoding.toVLQ
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -12,34 +12,34 @@ import java.math.BigInteger
 class VLQDecoding {
     @Test
     fun zeroFromVLQUnsigned() {
-        Assertions.assertEquals(BigInteger.ZERO, byteArrayOf(0).asSingleVLQ(false))
+        Assertions.assertEquals(BigInteger.ZERO, byteArrayOf(0).singleVLQ(false))
     }
 
     @Test
     fun zeroFromVLQSigned() {
-        Assertions.assertEquals(BigInteger.ZERO, byteArrayOf(0).asSingleVLQ(true))
+        Assertions.assertEquals(BigInteger.ZERO, byteArrayOf(0).singleVLQ(true))
     }
 
     @Test
     fun oneFromVLQUnsigned() {
-        Assertions.assertEquals(BigInteger.ONE, byteArrayOf(1).asSingleVLQ(false))
+        Assertions.assertEquals(BigInteger.ONE, byteArrayOf(1).singleVLQ(false))
     }
 
     @Test
     fun oneFromVLQSigned() {
-        Assertions.assertEquals(BigInteger.ONE, byteArrayOf(1).asSingleVLQ(true))
+        Assertions.assertEquals(BigInteger.ONE, byteArrayOf(1).singleVLQ(true))
     }
 
     @Test
     fun negativeOneFromVLQ() {
-        Assertions.assertEquals(-BigInteger.ONE, byteArrayOf(65).asSingleVLQ(true))
+        Assertions.assertEquals(-BigInteger.ONE, byteArrayOf(65).singleVLQ(true))
     }
 
     @Test
     fun biggerPositiveNumber() {
         Assertions.assertEquals(
                 106903.toBigInteger(),
-                byteArrayOf(-122, -61, 23).asSingleVLQ(false)
+                byteArrayOf(-122, -61, 23).singleVLQ(false)
         )
     }
 
@@ -47,7 +47,7 @@ class VLQDecoding {
     fun biggerNegativeToVLQ() {
         Assertions.assertEquals(
                 (-106903).toBigInteger(),
-                byteArrayOf(-58, -61, 23).asSingleVLQ(true)
+                byteArrayOf(-58, -61, 23).singleVLQ(true)
         )
     }
 
@@ -55,8 +55,8 @@ class VLQDecoding {
     fun firstVLQUnsigned() {
         val series = 106903.toVLQ(false)
         Assertions.assertEquals(
-                series.asSingleVLQ(false),
-                (series + series).asFirstVLQ(false)
+                series.singleVLQ(false),
+                (series + series).firstVLQ(false)
         )
     }
 
@@ -64,8 +64,8 @@ class VLQDecoding {
     fun firstVLQSigned() {
         val series = (-106903).toVLQ(true)
         Assertions.assertEquals(
-                series.asSingleVLQ(true),
-                (series + series).asFirstVLQ(true)
+                series.singleVLQ(true),
+                (series + series).firstVLQ(true)
         )
     }
 
@@ -74,7 +74,7 @@ class VLQDecoding {
         val series = 106903.toVLQ(false)
         Assertions.assertThrows(IllegalArgumentException::class.java)
         {
-            (series + series).asSingleVLQ(false)
+            (series + series).singleVLQ(false)
         }
     }
 
@@ -83,7 +83,7 @@ class VLQDecoding {
         val series = (-106903).toVLQ(true)
         Assertions.assertThrows(IllegalArgumentException::class.java)
         {
-            (series + series).asSingleVLQ(true)
+            (series + series).singleVLQ(true)
         }
     }
 }

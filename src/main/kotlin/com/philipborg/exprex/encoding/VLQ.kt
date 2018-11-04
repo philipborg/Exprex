@@ -45,7 +45,7 @@ fun Array<BigInteger>.toVLQ(signed: Boolean = true): ByteArray = this.map { it.t
 fun Sequence<BigInteger>.toVLQ(signed: Boolean = true): Sequence<Byte> = this.map { it.toVLQ(signed) }.flatMap { it.asSequence() }
 fun Collection<BigInteger>.toVLQ(signed: Boolean = true): ByteArray = this.map { it.toVLQ(signed) }.flatMap { it.asIterable() }.toByteArray()
 
-fun ByteArray.asSingleVLQ(signed: Boolean = true): BigInteger {
+fun ByteArray.singleVLQ(signed: Boolean = true): BigInteger {
     require(this.dropLast(1).all { it.toInt() and 128 > 0 })
     require(this.last().toInt() shr 7 == 0)
 
@@ -78,10 +78,10 @@ fun ByteArray.asSingleVLQ(signed: Boolean = true): BigInteger {
     return BigInteger(signum, response)
 }
 
-fun Collection<Byte>.asSingleVLQ(signed: Boolean = true): BigInteger = this.toByteArray().asSingleVLQ(signed)
+fun Collection<Byte>.singleVLQ(signed: Boolean = true): BigInteger = this.toByteArray().singleVLQ(signed)
 
-fun ByteArray.asFirstVLQ(signed: Boolean = true): BigInteger = this.asList().asFirstVLQ(signed)
-fun Collection<Byte>.asFirstVLQ(signed: Boolean = true): BigInteger = this.takeWhileIncludingLast { it.toInt() and 128 > 0 }.asSingleVLQ(signed)
+fun ByteArray.firstVLQ(signed: Boolean = true): BigInteger = this.asList().firstVLQ(signed)
+fun Collection<Byte>.firstVLQ(signed: Boolean = true): BigInteger = this.takeWhileIncludingLast { it.toInt() and 128 > 0 }.singleVLQ(signed)
 
-fun ByteArray.asVLQ(signed: Boolean = true): Sequence<BigInteger> = this.asList().asVLQ(signed)
-fun Collection<Byte>.asVLQ(signed: Boolean = true): Sequence<BigInteger> = this.sliceWhereIncluding { it.toInt() shr 7 == 0 }.asSequence().map { it.asSingleVLQ(signed) }
+fun ByteArray.toVLQ(signed: Boolean = true): Sequence<BigInteger> = this.asList().toVLQ(signed)
+fun Collection<Byte>.toVLQ(signed: Boolean = true): Sequence<BigInteger> = this.sliceWhereIncluding { it.toInt() shr 7 == 0 }.asSequence().map { it.singleVLQ(signed) }

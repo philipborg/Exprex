@@ -1,9 +1,9 @@
-package com.philipborg.exprex.operators
+package com.philipborg.exprex.nodes
 
-import com.philipborg.exprex.Exprex
+import com.philipborg.exprex.ExpressionNode
 import java.math.BigInteger
 
-data class NegativeExprex(val child: Exprex) : Exprex {
+data class NegativeNode(val child: ExpressionNode) : ExpressionNode {
     override fun invoke(vararg input: BigInteger): BigInteger {
         var result = child(*input)
         return when (result.signum()) {

@@ -1,7 +1,7 @@
 package com.philipborg.exprex.test.exprex.operators
 
-import com.philipborg.exprex.operators.MultiplicationExprex
-import com.philipborg.exprex.toValueExprex
+import com.philipborg.exprex.nodes.MultiplicationNode
+import com.philipborg.exprex.toValueNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -22,7 +22,7 @@ class Multiplication {
                         Scenario(-10, -10, 100)
                 ).map {
                     Executable {
-                        Assertions.assertEquals(it.product.toBigInteger(), MultiplicationExprex(it.multiplier.toValueExprex(), it.multiplicand.toValueExprex()).invoke(), it.toString())
+                        Assertions.assertEquals(it.product.toBigInteger(), MultiplicationNode(it.multiplier.toValueNode(), it.multiplicand.toValueNode()).invoke(), it.toString())
                     }
                 }
         )
