@@ -1,7 +1,7 @@
 package com.philipborg.exprex.test.exprex.operators
 
-import com.philipborg.exprex.operators.AdditionExprex
-import com.philipborg.exprex.toValueExprex
+import com.philipborg.exprex.nodes.AdditionNode
+import com.philipborg.exprex.toValueNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -21,7 +21,7 @@ class Addition {
                         Scenario(2, -3, -1)
                 ).map {
                     Executable {
-                        Assertions.assertEquals(it.sum.toBigInteger(), AdditionExprex(it.augend.toValueExprex(), it.addend.toValueExprex()).invoke(), it.toString())
+                        Assertions.assertEquals(it.sum.toBigInteger(), AdditionNode(it.augend.toValueNode(), it.addend.toValueNode()).invoke(), it.toString())
                     }
                 }
         )

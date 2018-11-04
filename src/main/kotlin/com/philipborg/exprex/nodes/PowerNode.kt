@@ -1,10 +1,10 @@
-package com.philipborg.exprex.operators
+package com.philipborg.exprex.nodes
 
-import com.philipborg.exprex.Exprex
+import com.philipborg.exprex.ExpressionNode
 import com.philipborg.exprex.math.RoundingMode
 import com.philipborg.exprex.math.power
 import java.math.BigInteger
 
-data class PowerExprex(val base: Exprex, val exponent: Exprex, val rounding: RoundingMode) : Exprex {
+data class PowerNode(val base: ExpressionNode, val exponent: ExpressionNode, val rounding: RoundingMode) : ExpressionNode {
     override fun invoke(vararg input: BigInteger): BigInteger = base(*input).power(exponent(*input), rounding)
 }

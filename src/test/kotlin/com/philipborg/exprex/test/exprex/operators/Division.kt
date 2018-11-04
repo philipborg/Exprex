@@ -1,8 +1,8 @@
 package com.philipborg.exprex.test.exprex.operators
 
 import com.philipborg.exprex.math.RoundingMode
-import com.philipborg.exprex.operators.DivisionExprex
-import com.philipborg.exprex.toValueExprex
+import com.philipborg.exprex.nodes.DivisionNode
+import com.philipborg.exprex.toValueNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -20,12 +20,12 @@ class Division {
                         Scenario(-5, -2, RoundingMode.HALF_EVEN, 2)
                 ).map {
                     Executable {
-                        Assertions.assertEquals(it.quotient.toBigInteger(), DivisionExprex(it.dividend.toValueExprex(), it.divisor.toValueExprex(), it.roundingMode).invoke(), it.toString())
+                        Assertions.assertEquals(it.quotient.toBigInteger(), DivisionNode(it.dividend.toValueNode(), it.divisor.toValueNode(), it.roundingMode).invoke(), it.toString())
                     }
                 }
         )
-        Assertions.assertThrows(ArithmeticException::class.java, { DivisionExprex(1.toValueExprex(), 0.toValueExprex(), RoundingMode.UNNECESSARY).invoke() }, "One divided by zero")
-        Assertions.assertThrows(ArithmeticException::class.java, { DivisionExprex(3.toValueExprex(), 2.toValueExprex(), RoundingMode.UNNECESSARY).invoke() }, "Three divided by two RoundingMode='${RoundingMode.UNNECESSARY.name}'")
+        Assertions.assertThrows(ArithmeticException::class.java, { DivisionNode(1.toValueNode(), 0.toValueNode(), RoundingMode.UNNECESSARY).invoke() }, "One divided by zero")
+        Assertions.assertThrows(ArithmeticException::class.java, { DivisionNode(3.toValueNode(), 2.toValueNode(), RoundingMode.UNNECESSARY).invoke() }, "Three divided by two RoundingMode='${RoundingMode.UNNECESSARY.name}'")
     }
 
     data class Scenario(val dividend: Int, val divisor: Int, val roundingMode: RoundingMode, val quotient: Int)

@@ -1,7 +1,7 @@
 package com.philipborg.exprex.test.exprex.operators
 
-import com.philipborg.exprex.operators.ModulusExprex
-import com.philipborg.exprex.toValueExprex
+import com.philipborg.exprex.nodes.ModulusNode
+import com.philipborg.exprex.toValueNode
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -21,11 +21,11 @@ class Modulus {
                         Scenario(10, 3, 1)
                 ).map {
                     Executable {
-                        Assertions.assertEquals(it.remainder.toBigInteger(), ModulusExprex(it.dividend.toValueExprex(), it.divisor.toValueExprex()).invoke(), it.toString())
+                        Assertions.assertEquals(it.remainder.toBigInteger(), ModulusNode(it.dividend.toValueNode(), it.divisor.toValueNode()).invoke(), it.toString())
                     }
                 }
         )
-        Assertions.assertThrows(ArithmeticException::class.java, { ModulusExprex(1.toValueExprex(), 0.toValueExprex()).invoke() }, "One modulus zero")
+        Assertions.assertThrows(ArithmeticException::class.java, { ModulusNode(1.toValueNode(), 0.toValueNode()).invoke() }, "One modulus zero")
     }
 
     data class Scenario(val dividend: Int, val divisor: Int, val remainder: Int)
