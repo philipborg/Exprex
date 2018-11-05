@@ -63,6 +63,21 @@ private tailrec fun resolve(quotient: BigInteger, remainder: BigInteger, divisor
 }
 
 fun BigInteger.div(divisor: Byte, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
+
+@ExperimentalUnsignedTypes
+fun BigInteger.div(divisor: UByte, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
+
 fun BigInteger.div(divisor: Short, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
+
+@ExperimentalUnsignedTypes
+fun BigInteger.div(divisor: UShort, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
+
 fun BigInteger.div(divisor: Int, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
+
+@ExperimentalUnsignedTypes
+fun BigInteger.div(divisor: UInt, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
+
 fun BigInteger.div(divisor: Long, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)
+
+@ExperimentalUnsignedTypes
+fun BigInteger.div(divisor: ULong, roundingMode: RoundingMode = RoundingMode.UNNECESSARY): BigInteger = this.div(divisor.toBigInteger(), roundingMode)

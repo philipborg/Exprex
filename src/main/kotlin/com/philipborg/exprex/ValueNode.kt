@@ -8,7 +8,23 @@ data class ValueNode(val value: BigInteger) : ExpressionNode {
 }
 
 fun BigInteger.toValueNode(): ValueNode = ValueNode(this)
+
 fun Byte.toValueNode(): ValueNode = ValueNode(this.toBigInteger())
+
+@ExperimentalUnsignedTypes
+fun UByte.toValueNode(): ValueNode = ValueNode(this.toBigInteger())
+
 fun Short.toValueNode(): ValueNode = ValueNode(this.toBigInteger())
+
+@ExperimentalUnsignedTypes
+fun UShort.toValueNode(): ValueNode = ValueNode(this.toBigInteger())
+
 fun Int.toValueNode(): ValueNode = ValueNode(this.toBigInteger())
+
+@ExperimentalUnsignedTypes
+fun UInt.toValueNode(): ValueNode = ValueNode(this.toBigInteger())
+
 fun Long.toValueNode(): ValueNode = ValueNode(this.toBigInteger())
+
+@ExperimentalUnsignedTypes
+fun ULong.toValueNode(): ValueNode = ValueNode(this.toBigInteger())

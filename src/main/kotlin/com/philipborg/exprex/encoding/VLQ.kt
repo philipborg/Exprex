@@ -38,9 +38,26 @@ fun BigInteger.toVLQ(signed: Boolean = true): ByteArray {
     return response
 }
 
+fun Byte.toVLQ(signed: Boolean = true): ByteArray = this.toBigInteger().toVLQ(signed)
+
+@ExperimentalUnsignedTypes
+fun UByte.toVLQ(signed: Boolean): ByteArray = this.toBigInteger().toVLQ(signed)
+
 fun Short.toVLQ(signed: Boolean = true): ByteArray = this.toBigInteger().toVLQ(signed)
+
+@ExperimentalUnsignedTypes
+fun UShort.toVLQ(signed: Boolean): ByteArray = this.toBigInteger().toVLQ(signed)
+
 fun Int.toVLQ(signed: Boolean = true): ByteArray = this.toBigInteger().toVLQ(signed)
+
+@ExperimentalUnsignedTypes
+fun UInt.toVLQ(signed: Boolean): ByteArray = this.toBigInteger().toVLQ(signed)
+
 fun Long.toVLQ(signed: Boolean = true): ByteArray = this.toBigInteger().toVLQ(signed)
+
+@ExperimentalUnsignedTypes
+fun ULong.toVLQ(signed: Boolean): ByteArray = this.toBigInteger().toVLQ(signed)
+
 fun Array<BigInteger>.toVLQ(signed: Boolean = true): ByteArray = this.map { it.toVLQ(signed) }.flatMap { it.asIterable() }.toByteArray()
 fun Sequence<BigInteger>.toVLQ(signed: Boolean = true): Sequence<Byte> = this.map { it.toVLQ(signed) }.flatMap { it.asSequence() }
 fun Collection<BigInteger>.toVLQ(signed: Boolean = true): ByteArray = this.map { it.toVLQ(signed) }.flatMap { it.asIterable() }.toByteArray()

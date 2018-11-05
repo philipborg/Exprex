@@ -16,6 +16,9 @@ fun Short.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray {
     }
 }
 
+@ExperimentalUnsignedTypes
+fun UShort.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = this.toShort().toBytes(endianness)
+
 fun Int.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endianness) {
     Endian.BIG_ENDIAN -> byteArrayOf(
             (this shr 24 and 0xff).toByte(),
@@ -30,6 +33,9 @@ fun Int.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endia
             (this shr 24 and 0xff).toByte()
     )
 }
+
+@ExperimentalUnsignedTypes
+fun UInt.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = this.toInt().toBytes(endianness)
 
 fun Long.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endianness) {
     Endian.BIG_ENDIAN -> byteArrayOf(
@@ -53,6 +59,9 @@ fun Long.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endi
             (this shr 56 and 0xff).toByte()
     )
 }
+
+@ExperimentalUnsignedTypes
+fun ULong.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = this.toLong().toBytes(endianness)
 
 fun BigInteger.toBytes(endianness: Endian = Endian.BIG_ENDIAN): ByteArray = when (endianness) {
     Endian.BIG_ENDIAN -> this.toByteArray()
