@@ -3,6 +3,7 @@
 [![CircleCI branch](https://img.shields.io/circleci/project/github/philipborg/Exprex/master.svg)](https://circleci.com/gh/philipborg/Exprex/tree/master)
 [![GitHub](https://img.shields.io/github/license/philipborg/Exprex.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![GitHub top language](https://img.shields.io/github/languages/top/philipborg/Exprex.svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/philipborg/Exprex.svg)
 
 Integer math expression library and language written in Kotlin.
 
@@ -34,3 +35,8 @@ Integer math expression library and language written in Kotlin.
   * No rounding errors
   * Division with RoundingMode
   * Exponentiation with RoundingMode
+* Convert to bytes
+  * Big or Little Endian
+  * Short/UShort
+  * Int/UInt
+  * Long/ULong
