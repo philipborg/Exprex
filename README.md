@@ -1,5 +1,5 @@
 # Exprex
-[ ![Download](https://api.bintray.com/packages/philipborg/Exprex/Exprex/images/download.svg) ](https://bintray.com/philipborg/Exprex/Exprex/_latestVersion)
+[![Bintray](https://img.shields.io/bintray/v/philipborg/Exprex/Exprex.svg)](https://bintray.com/philipborg/Exprex/Exprex/_latestVersion)
 [![CircleCI branch](https://img.shields.io/circleci/project/github/philipborg/Exprex/master.svg)](https://circleci.com/gh/philipborg/Exprex/tree/master)
 [![GitHub](https://img.shields.io/github/license/philipborg/Exprex.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![GitHub top language](https://img.shields.io/github/languages/top/philipborg/Exprex.svg)
