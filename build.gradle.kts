@@ -19,10 +19,17 @@ version = versionId
 repositories {
     jcenter()
     mavenCentral()
+    maven("https://dl.bintray.com/soywiz/soywiz/")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 dependencies {
     implementation(kotlin("stdlib", "1.3.0"))
+    compile("com.soywiz:kbignum-jvm:0.9.0")
     testCompile("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testCompile("org.junit.jupiter:junit-jupiter-params:$junitVersion")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
